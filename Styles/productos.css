@@ -1,0 +1,18 @@
+.container_Products,.busqueda_container {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+.product {
+    width: 10%;
+    height: 10%;
+    margin: 10px;
+    border: 0;
+    padding: 10px;
+}
+.image_Container {
+    height: 100%;
+    width: 100%; 
+}
