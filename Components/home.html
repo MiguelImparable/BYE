@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tu Tienda en Línea</title>
+    <script src="../Models/Producto.js"></script>
+    <script src="../Services/home.js"></script> 
+    <link rel="stylesheet" type="text/css" href="../Styles/Home.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/ProyectoLibny/Styles/productos.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -18,203 +17,37 @@
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
             </form>
         </div>
-
         <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Perfil
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Editar Perfil</a>
-                    <a class="dropdown-item" href="#">Cambiar Contraseña</a>
+                    <a class="dropdown-item" href="CreateAccount.html">Editar Perfil</a>
+                    <a class="dropdown-item" href="ChangePassword.html">Cambiar Contraseña</a>
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Carrito</a>
+                <a class="nav-link" href="ShoppingCart.html">Carrito</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Historial de Compras</a>
+                <a class="nav-link" href="Orders.html">Historial de Compras</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Configuración</a>
+                <a class="nav-link" href="admin.html">Configuración</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Cerrar Sesión</a>
+                <a class="nav-link" href="login.html">Cerrar Sesión</a>
             </li>
         </ul>
     </nav>
 
-    <h2>Productos Destacados</h2>
-    <div class="container_Products" id="productosContainer">
-        <!-- Los productos se agregarán dinámicamente aquí -->
+
+    <div class="container_Products" id="productosContainer"></div>
+
+    <div class="product-card" data-index="0"> <!-- Cambia el número de índice según el producto -->
+        <!-- Resto del código del producto -->
     </div>
 
-    <li class="nav-item">
-        <a class="nav-link" href="#" id="cartLink">Carrito (0)</a>
-        <div id="cartDropdown" class="cart-dropdown">
-            <ul id="cartItems"></ul>
-            <button id="checkoutBtn" class="btn btn-primary">Realizar Compra</button>
-        </div>
-    </li>
-
-    <script>
-        // MODELO PRODUCTO
-        class Producto {
-            constructor(nombre, descripcion, precio, imagenURL, cantidad) {
-                this.nombre = nombre;
-                this.descripcion = descripcion;
-                this.precio = precio;
-                this.imagenURL = imagenURL;
-                this.cantidad = cantidad
-            }
-        }
-
-
-        // INSTANCIAR ARRAY
-        var productos = [];
-
-        // LLENAR ARRAY
-        productos.push( new Producto("Producto 1", "Descripción del producto 1", 99.99, "/BYE/Images/Img1.jpg",10));
-        productos.push( new Producto("Producto 2", "libny te amo", 79.99, "/BYE/Images/Img2.jpg",8));
-        productos.push( new Producto("Producto 2", "libny te amo", 79.99, "/BYE/Images/Img3.jpg",8));
-        productos.push( new Producto("Producto 2", "libny te amo", 79.99, "/BYE/Images/Img4.jpg",8));
-        productos.push( new Producto("Producto 2", "libny te amo", 79.99, "/BYE/Images/Img5.jpg",8));
-        productos.push( new Producto("Producto 2", "libny te amo", 79.99, "/BYE/Images/Img6.jpg",8));
-        productos.push( new Producto("Producto 2", "libny te amo", 79.99, "/BYE/Images/Img7.jpg",8));
-        productos.push( new Producto("Producto 2", "libny te amo", 79.99, "/BYE/Images/Img8.jpg",8));
-        productos.push( new Producto("Producto 2", "libny te amo", 79.99, "/BYE/Images/Img9.jpg",8));
-        productos.push( new Producto("Producto 2", "libny te amo", 79.99, "/BYE/Images/Img10.jpg",8));
-
-        document.addEventListener("DOMContentLoaded", function () {
-            const productosContainer = document.getElementById("productosContainer");
-
-            // Itera sobre los productos y agrégalos al contenedor
-            productos.forEach((producto) => {
-                const productHTML = `
-                    <div class="product">
-                        <img src="${producto.imagenURL}" class="imagen_product" style="width: 200px; height: 300px;">
-                        <div class="card-body">
-                            <h5 class="card-title">${producto.nombre}</h5>
-                            <p class="card-text">${producto.descripcion}</p>
-                            <p class="card-text">${producto.precio.toFixed(2)}</p>
-                            <div class="cantidad">
-                                <p>cantidad:</p>
-                                <p class="card-text">${producto.cantidad}</p>
-                            </div>
-                            <a href="#" class="btn btn-primary">Agregar al carrito</a>
-                        </div>
-                    </div>
-                `;
-                productosContainer.innerHTML += productHTML;
-            });
-        });
-
-        // Variables para el carrito
-        const carrito = [];
-        const cartLink = document.getElementById("cartLink");
-        const cartDropdown = document.getElementById("cartDropdown");
-        const cartItemsList = document.getElementById("cartItems");
-        const checkoutBtn = document.getElementById("checkoutBtn");
-
-        // Función para actualizar el número de elementos en el carrito
-        function actualizarCantidadCarrito() {
-            cartLink.textContent = `Carrito (${carrito.length})`;
-        }
-
-        // Función para agregar un producto al carrito
-        function agregarAlCarrito(producto) {
-            carrito.push(producto);
-            actualizarCantidadCarrito();
-        }
-
-        // Función para mostrar los productos en el carrito
-        function mostrarCarrito() {
-            cartItemsList.innerHTML = "";
-
-            carrito.forEach((producto, index) => {
-                const listItem = document.createElement("li");
-                listItem.innerHTML = `
-                    ${producto.nombre} - Cantidad: ${producto.cantidad}
-                    <button class="btn btn-sm btn-danger" data-index="${index}">Eliminar</button>
-                `;
-                cartItemsList.appendChild(listItem);
-            });
-
-            // Agregar un evento de clic para eliminar productos del carrito
-            const deleteButtons = cartItemsList.querySelectorAll(".btn-danger");
-            deleteButtons.forEach((button) => {
-                button.addEventListener("click", (event) => {
-                    const index = event.target.getAttribute("data-index");
-                    carrito.splice(index, 1);
-                    mostrarCarrito();
-                    actualizarCantidadCarrito();
-                });
-            });
-        }
-
-        // Agregar un evento de clic para los botones "Agregar al carrito"
-        document.addEventListener("click", (event) => {
-            if (event.target.classList.contains("btn-primary")) {
-                const productoIndex = event.target.parentElement.parentElement.dataset.index;
-                const producto = productos[productoIndex];
-
-                // Verificar si el producto ya está en el carrito
-                const carritoIndex = carrito.findIndex((item) => item.nombre === producto.nombre);
-
-                if (carritoIndex !== -1) {
-                    const cantidad = prompt(`Cantidad actual en el carrito: ${carrito[carritoIndex].cantidad}\nNueva cantidad:`);
-                    if (!isNaN(cantidad)) {
-                        const nuevaCantidad = parseInt(cantidad);
-                        if (nuevaCantidad > 0 && nuevaCantidad <= producto.cantidad) {
-                            carrito[carritoIndex].cantidad = nuevaCantidad;
-                        } else {
-                            alert("La cantidad ingresada no es válida.");
-                        }
-                    } else {
-                        alert("La cantidad ingresada no es un número válido.");
-                    }
-                } else {
-                    const cantidad = prompt(`Cantidad actual en el carrito: 0\nNueva cantidad:`);
-                    if (!isNaN(cantidad)) {
-                        const nuevaCantidad = parseInt(cantidad);
-                        if (nuevaCantidad > 0 && nuevaCantidad <= producto.cantidad) {
-                            producto.cantidad = nuevaCantidad;
-                            agregarAlCarrito(producto);
-                        } else {
-                            alert("La cantidad ingresada no es válida.");
-                        }
-                    } else {
-                        alert("La cantidad ingresada no es un número válido.");
-                    }
-                }
-
-                mostrarCarrito();
-            }
-        });
-
-        // Agregar un evento de clic para el botón "Realizar Compra"
-        checkoutBtn.addEventListener("click", () => {
-            if (carrito.length === 0) {
-                alert("El carrito está vacío. Agrega productos antes de realizar la compra.");
-                return;
-            }
-
-            // Aquí puedes agregar la lógica para procesar la compra
-            // Esto podría incluir enviar los detalles del carrito al servidor para procesar la compra,
-            // redirigir al usuario a una página de confirmación, etc.
-            
-            // Por simplicidad, aquí solo se muestra un mensaje de confirmación
-            alert("Compra realizada con éxito. ¡Gracias por tu compra!");
-            
-            // Después de realizar la compra, vacía el carrito
-            carrito.length = 0;
-            actualizarCantidadCarrito();
-            mostrarCarrito();
-        });
-
-        // Inicializar el carrito
-        actualizarCantidadCarrito();
-        mostrarCarrito();
-    </script>
 </body>
 </html>

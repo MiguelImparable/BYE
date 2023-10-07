@@ -1,0 +1,192 @@
+:root {
+    --white: #FFFFFF;
+    --black: #000000;
+    --very-light-pink: #C7C7C7;
+    --text-input-field: #F7F7F7;
+    --hospital-green: #ACD9B2;
+    --sm: 14px;
+    --md: 16px;
+    --lg: 18px;
+}
+body {
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+}
+.cards-container {
+    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 240px);
+    gap: 26px;
+    place-content: center;
+}
+.product-card {
+    flex-grow: 5;
+    max-width: 300px;
+}
+.product-card img {
+    max-width: 240px;
+    max-width: 240px;
+    border-radius: 20px;
+
+}
+.product-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+}
+.product-info figure {
+    margin: 0;
+}
+.product-info figure img {
+    width: 35px;
+    height: 35px;
+}
+.product-info div p:nth-child(1) {
+    font-weight: bold;
+    font-size: var(--md);
+    margin-top: 0;
+    margin-bottom: 4px;
+}
+.product-info div p:nth-child(2) {
+    font-size: var(--sm);
+    margin-top: 0;
+    margin-bottom: 0;
+    color: var(--very-light-pink);
+}
+@media (max-width: 640px) {
+.cards-container {
+grid-template-columns: repeat(auto-fill, 140px);
+}
+.product-card {
+    width: 140px;
+}
+.product-card img {
+    width: 140px;
+    height: 140px;
+}
+}
+/* Estilo para el botón */
+.container_Products .btn {
+    display: inline-block;
+    padding: 10px 20px; /* Ajusta el padding según sea necesario */
+    text-decoration: none;
+    border: none;
+    background-color: transparent; /* Fondo transparente para el botón */
+    color: #007bff; /* Color del texto */
+    cursor: pointer;
+    background-image: url('../icons/bt_add_to_cart.svg'); /* Imagen de fondo */
+    background-repeat: no-repeat;
+    background-size: 20px; /* Ajusta el tamaño de la imagen según sea necesario */
+    background-position: left center; /* Posición de la imagen de fondo */
+}
+
+/* Estilo cuando el cursor pasa sobre el botón */
+.btn:hover {
+    color: #0056b3; /* Cambia el color del texto al pasar el cursor */
+}
+
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+}
+
+.container_Products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.productosContainer{
+    display: FLEX;
+}
+
+.product {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 500px; /* Ancho deseado para los productos */
+    margin: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para el texto del producto */
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Estilos para el botón "Agregar al carrito" */
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para el encabezado "Productos Destacados" */
+h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-top: 20px;
+    color: #333;
+}
+
+/* Estilos para la barra de navegación */
+.navbar {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+
+.busqueda_container {
+    margin-right: auto;
+}
+
+/* Estilos para el formulario de búsqueda */
+.form-control {
+    width: 300px;
+}
+
+/* Estilos para el enlace del perfil en la barra de navegación */
+.nav-link {
+    color: #333;
+    font-weight: bold;
+}
+
+/* Estilos para los elementos del menú desplegable */
+.dropdown-menu {
+    background-color: #fff;
+}
+
+.dropdown-item {
+    color: #333;
+}
+
+.dropdown-item:hover {
+    background-color: #f0f0f0;
+}
