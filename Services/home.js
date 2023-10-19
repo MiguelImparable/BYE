@@ -1,9 +1,9 @@
 //import Producto from '..Models/Producto';
 
-// INSTANCIAR ELEMENTOS
+// INSTANCIAR ELEMENTOS: (Crear variables)
 var productos = [];
 
-
+// llenar el array para emular datos
 productos.push( new Producto("Producto 1", "Descripción del producto 1", 99.99, "/BYE/Images/Img1.jpg",10));
 productos.push( new Producto("Producto 2", "libny te amo", 79.99, "/BYE/Images/Img2.jpg",8));
 productos.push( new Producto("Producto 2", "libny te amo", 79.99, "/BYE/Images/Img3.jpg",8));
